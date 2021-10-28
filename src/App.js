@@ -140,7 +140,7 @@ function ShapeSax({ geometry, material, args, textures, opacity, color, shadowSc
 function Shapes({ transition }) {
   const { viewport } = useThree()
   return transition(({ opacity, ...props }, location) => (
-    <a.group {...props} dispose={null}>
+    <a.group {...props}>
       <Switch location={location}>
         <Route path="/">
           <Shape 
@@ -206,6 +206,7 @@ function App() {
         </Suspense>
       </Canvas>
       <Nav style={{ color: props.color }} />
+      <Loader />
     </>
   )
 }
