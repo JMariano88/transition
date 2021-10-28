@@ -9,6 +9,7 @@ import { useLocation, Switch, Route } from "wouter"
 import { Container, Jumbo, Nav, Box, Line, Cover } from "./Styles"
 
 
+
 const jumbo = {
   "/": ["Trumpet", "means the power."],
   "/Sax": ["Saxophone", "means the passion."],
@@ -17,7 +18,7 @@ const jumbo = {
 
 // trumpet shape
 
-function Trumpet({ ...props }) {
+const Trumpet = function NewTrumpet({ ...props }) {
   const group = useRef()
   const { nodes  } = useGLTF('/trumpet.glb')
   return (
@@ -57,7 +58,7 @@ function Shape({ geometry, material, args, textures, opacity, color, shadowScale
 
 // trombone shape
 
-function Trombone({ ...props }) {
+const Trombone = function NewTrombone({ ...props }) {
   const group = useRef()
   const { nodes, materials } = useGLTF('/trombone.glb')
   return (
@@ -141,7 +142,7 @@ function ShapeTrombone({ geometry, material, args, textures, opacity, color, sha
 
 // saxofone shape
 
-function Sax({ ...props }) {
+const Sax = function NewSax({ ...props }) {
   const group = useRef()
   const { nodes, materials } = useGLTF('sax.glb')
   
@@ -188,15 +189,15 @@ function Shapes({ transition }) {
       <Switch location={location}>
         <Route path="/">
           <Shape 
-          scale={(viewport.width / 28)}/>
+          scale={(viewport.width / 28)} opacity={opacity}/>
            
         </Route>
         <Route path="/Sax">
         <ShapeSax
-        scale={(viewport.width / 28)}/>
+        scale={(viewport.width / 28)} opacity={opacity}/>
         </Route>
         <Route path="/bass">
-        <ShapeTrombone scale={(viewport.width / 28)}/>
+        <ShapeTrombone scale={(viewport.width / 28)  } opacity={opacity}/>
         </Route>
       </Switch>
     </a.group>
@@ -241,6 +242,7 @@ function App() {
           ))}
         </Jumbo>
       </Container>
+      
       <Canvas concurrent camera={{ position: [0, 0, 20], fov: 50 }} onCreated={({ gl }) => (gl.toneMappingExposure = 1.5)}>
         <spotLight position={[0, 30, 40]} />
         <spotLight position={[-50, 30, 40]} />
@@ -248,8 +250,10 @@ function App() {
           <Shapes transition={transition} />
         </Suspense>
       </Canvas>
+      
       <Nav style={{ color: props.color }} />
       <Loader/>
+      
       
     </>
   )
