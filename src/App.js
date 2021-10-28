@@ -1,7 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
 import * as THREE from "three"
-import React, { Suspense, useLayoutEffect, useMemo, useRef } from "react"
+import React, { Suspense, useMemo, useRef } from "react"
 import { Canvas, useThree, useFrame } from "@react-three/fiber"
 import { Environment, Loader, useTexture, useGLTF, Shadow } from "@react-three/drei"
 import { useTransition, useSpring } from "@react-spring/core"
@@ -207,7 +206,6 @@ function App() {
         </Suspense>
       </Canvas>
       <Nav style={{ color: props.color }} />
-      <Loader />
     </>
   )
 }
