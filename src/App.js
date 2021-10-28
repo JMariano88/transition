@@ -34,7 +34,7 @@ const Trumpet = function NewTrumpet({ ...props }) {
   )
 }
 
-function Shape({ geometry, material, args, textures, opacity, color, shadowScale = [9, 1.5, 1], ...props }) {
+const Shape = function NewShape({ geometry, material, args, textures, opacity, color, shadowScale = [9, 1.5, 1], ...props }) {
   const ref = useRef()
   const { mouse, clock } = useThree()
   const [rEuler, rQuaternion] = useMemo(() => [new THREE.Euler(), new THREE.Quaternion()], [])
@@ -62,7 +62,7 @@ const Trombone = function NewTrombone({ ...props }) {
   const group = useRef()
   const { nodes, materials } = useGLTF('/trombone.glb')
   return (
-    <group ref={group} {...props} dispose={null}>
+    <group ref={group} {...props}>
       <mesh
         geometry={nodes.BezierCurve_BezierCurve001.geometry}
         material={nodes.BezierCurve_BezierCurve001.material}
@@ -117,7 +117,7 @@ const Trombone = function NewTrombone({ ...props }) {
   )
 }
 
-function ShapeTrombone({ geometry, material, args, textures, opacity, color, shadowScale = [9, 1.5, 1], ...props }) {
+const ShapeTrombone = function NewShapeTrombone({ geometry, material, args, textures, opacity, color, shadowScale = [9, 1.5, 1], ...props }) {
   const { viewport } = useThree()
   const ref = useRef()
   const { mouse, clock } = useThree()
@@ -159,7 +159,7 @@ const Sax = function NewSax({ ...props }) {
   )
 }
 
-function ShapeSax({ geometry, material, args, textures, opacity, color, shadowScale = [9, 1.5, 1], ...props }) {
+const ShapeSax = function NewShapeSax({ geometry, material, args, textures, opacity, color, shadowScale = [9, 1.5, 1], ...props }) {
   const { viewport } = useThree()
   const ref = useRef()
   const { mouse, clock } = useThree()
@@ -182,7 +182,7 @@ function ShapeSax({ geometry, material, args, textures, opacity, color, shadowSc
   )
 }
 
-function Shapes({ transition }) {
+const Shapes = function NewShapes({ transition }) {
   const { viewport } = useThree()
   return transition(({ opacity, ...props }, location) => (
     <a.group {...props}>
