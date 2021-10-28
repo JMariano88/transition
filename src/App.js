@@ -233,7 +233,7 @@ function App() {
   })
   return (
     <>
-    <Loader/>
+    
       <Container style={{ ...props }}>
       <Jumbo>
           {transition((style, location) => (
