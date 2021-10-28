@@ -234,7 +234,7 @@ function App() {
   })
   return (
     <>
-    
+    <Suspense fallback={null}>
       <Container style={{ ...props }}>
       <Jumbo>
           {transition((style, location) => (
@@ -246,12 +246,13 @@ function App() {
       <Canvas concurrent camera={{ position: [0, 0, 20], fov: 50 }} onCreated={({ gl }) => (gl.toneMappingExposure = 1.5)}>
         <spotLight position={[0, 30, 40]} />
         <spotLight position={[-50, 30, 40]} />
-        <Suspense fallback={null}>
+        
           <Shapes transition={transition} />
-        </Suspense>
+        
       </Canvas>
       
       <Nav style={{ color: props.color }} />
+      </Suspense>
       <Loader/>
       
       
