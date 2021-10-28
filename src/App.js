@@ -151,11 +151,9 @@ function Shapes({ transition }) {
         <ShapeSax
         scale={(viewport.width / 28)}/>
         </Route>
-        <Route path="/bomb">
-        <ShapeSax/>
-        </Route>
+        <Route path="/bass">
         <ShapeTrombone scale={(viewport.width / 28)}/>
-        
+        </Route>
       </Switch>
     </a.group>
   ))
@@ -191,6 +189,7 @@ function App() {
   })
   return (
     <>
+    <Loader/>
       <Container style={{ ...props }}>
       <Jumbo>
           {transition((style, location) => (
@@ -206,7 +205,8 @@ function App() {
         </Suspense>
       </Canvas>
       <Nav style={{ color: props.color }} />
-      <Loader />
+      <Loader/>
+      
     </>
   )
 }
