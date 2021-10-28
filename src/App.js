@@ -7,13 +7,55 @@ import { useTransition, useSpring } from "@react-spring/core"
 import { a } from "@react-spring/three"
 import { useLocation, Switch, Route } from "wouter"
 import { Container, Jumbo, Nav, Box, Line, Cover } from "./Styles"
-import Shape from './Shape';
+
 
 const jumbo = {
   "/": ["Trumpet", "means the power."],
   "/Sax": ["Saxophone", "means the passion."],
   "/Bass": ["Trombone", "all carried it", "for the perfect jazz."],
 }
+
+// trumpet shape
+
+function Trumpet({ ...props }) {
+  const group = useRef()
+  const { nodes  } = useGLTF('/trumpet.glb')
+  return (
+    <group ref={group} {...props} dispose={null}>
+      <mesh
+        geometry={nodes['0A698B926E6442D098A259590Ba032D6'].geometry}
+        material={nodes['0A698B926E6442D098A259590Ba032D6'].material}
+        position={[-7, 0, 0]}
+        rotation={[1.55, 0, 1.55]}
+        scale={0.4}
+      />
+    </group>
+  )
+}
+
+function Shape({ geometry, material, args, textures, opacity, color, shadowScale = [9, 1.5, 1], ...props }) {
+  const ref = useRef()
+  const { mouse, clock } = useThree()
+  const [rEuler, rQuaternion] = useMemo(() => [new THREE.Euler(), new THREE.Quaternion()], [])
+  useFrame(() => {
+    if (ref.current) {
+      rEuler.set((-mouse.y * Math.PI) / 10, (mouse.x * Math.PI) / 6, 0)
+      ref.current.quaternion.slerp(rQuaternion.setFromEuler(rEuler), 0.1)
+    }
+  })
+  return (
+    <group {...props}>
+      <a.mesh
+        ref={ref}>
+      <Trumpet />
+      <Shadow opacity={0.2} scale={shadowScale} position={[0, -8.5, 0]} />  
+        
+      </a.mesh>
+    </group>
+  )
+}
+
+// trombone shape
 
 function Trombone({ ...props }) {
   const group = useRef()
@@ -96,6 +138,8 @@ function ShapeTrombone({ geometry, material, args, textures, opacity, color, sha
     </group>
   )
 }
+
+// saxofone shape
 
 function Sax({ ...props }) {
   const group = useRef()
