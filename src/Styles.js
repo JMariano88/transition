@@ -23,10 +23,10 @@ position: absolute;
   margin-bottom: 25rem;
   font-size: 7em;
   font-weight: 800;
-  letter-spacing: -4px;
+  letter-spacing: 0px;
   @media (max-width: 795px){
     font-size: 1.5em;
-    top:100px;
+    top:180px;
 
   }
 `

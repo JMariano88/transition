@@ -253,7 +253,9 @@ function App() {
       
       <Nav style={{ color: props.color }} />
       </Suspense>
-      <Loader/>
+      <Loader
+    dataInterpolation={(p) => 'Float3D is thinking'}>
+      </Loader>
       
       
     </>
