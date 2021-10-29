@@ -18,6 +18,7 @@ const Container = styled(a.div)`
 `
 
 const Jumbo = styled.div`
+position: absolute;
   white-space: pre;
   margin-bottom: 25rem;
   font-size: 7em;
@@ -25,7 +26,7 @@ const Jumbo = styled.div`
   letter-spacing: -4px;
   @media (max-width: 795px){
     font-size: 1.5em;
-    margin-bottom: 20rem
+    top:100px;
 
   }
 `
