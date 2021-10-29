@@ -31,10 +31,13 @@ const Jumbo = styled.div`
 `
 
 const NavRight = styled(a.div)`
+
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
   position: absolute;
-  right: 50px;
-  top: 50px;
-  
+  top: 20px;
 `
 
 const Box = styled(a.div)`
